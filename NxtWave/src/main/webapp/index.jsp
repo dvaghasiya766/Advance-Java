@@ -231,38 +231,38 @@
                 <div class="field-container py-2 py-md-4">
                     <h1 class="heading-1 darkText autoShow">Sign Up</h1>
                     <p class="description autoShow">Fields for Registration...</p>
-                    <form action="" method="post">
+                    <form action="SignUpServlet" method="post">
                         <div class="filed-group autoShow">
                             <label for="fname" class="form-label">First Name</label>
-                            <input type="text" class="form-control" id="fname" required>
+                            <input type="text" class="form-control" id="fname" name="fname" required>
                             <div id="fnameHelp" class="form-text">
                                 Ex. Sachin
                             </div>
                         </div>
                         <div class="filed-group autoShow">
                             <label for="lname" class="form-label">Last Name</label>
-                            <input type="text" class="form-control" id="lname" required>
+                            <input type="text" class="form-control" id="lname" name="lname" required>
                             <div id="lnameHelp" class="form-text">
                                 Ex. Tendulkar
                             </div>
                         </div>
                         <div class="filed-group autoShow">
                             <label for="remail" class="form-label">Email address</label>
-                            <input type="email" class="form-control" id="remail" aria-describedby="emailHelp" required>
+                            <input type="email" class="form-control" id="remail" name="remail" aria-describedby="emailHelp" required>
                             <div id="remailHelp" class="form-text">
                                 We'll never share your email with anyone else.
                             </div>
                         </div>
                         <div class="filed-group autoShow">
                             <label for="mob" class="form-label">Contact Number</label>
-                            <input type="tel" class="form-control" id="mob" required>
+                            <input type="tel" class="form-control" id="mob" name="mob" required>
                             <div id="mobHelp" class="form-text">
                                 Ex. 8500*****4
                             </div>
                         </div>
                         <div class="filed-group autoShow">
                             <label for="rpsw" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="rpsw" aria-describedby="passwordHelp"
+                            <input type="password" class="form-control" id="rpsw" name="rpsw" aria-describedby="passwordHelp"
                                 required>
                             <div id="rpswHelp" class="form-text">
                                 Tip: Capital, Small, Spacial and Numerical Latter Must be Exist.
