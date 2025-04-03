@@ -1,0 +1,27 @@
+@charset "UTF-8";
+/* Source Sans Medium */
+@font-face {
+  font-family: "Source Sans Medium";
+  /* Name of the font */
+  src: url("../Fonts/Sofia_Sans/static/SofiaSans-Medium.ttf") format("truetype");
+  /* Path to the.ttf file */
+}
+
+/* Source Sans MediumItalic */
+@font-face {
+  font-family: "Source Sans MediumItalic";
+  /* Name of the font */
+  src: url("../Fonts/Sofia_Sans/static/SofiaSans-MediumItalic.ttf")
+    format("truetype");
+  /* Path to the.ttf file */
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Source Sans MediumItalic";
+  transition: all 0.4s ease;
+  text-decoration: none;
+}
+body {
+  background-color: #fafbfe;
+}

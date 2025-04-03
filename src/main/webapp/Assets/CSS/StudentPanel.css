@@ -1,0 +1,324 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+.full-width {
+  width: 100vw;
+  height: 100vh;
+
+  /* Display Configuration */
+  display: flex;
+}
+
+.AuthorizedNavbarLp {
+  background-color: #c4dae6;
+  color: white;
+  width: 230px;
+  height: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-between;
+  box-sizing: border-box;
+  border-right: 2px solid #6c757d;
+}
+
+.AuthorizedNavbarBrand {
+  width: 100%;
+  border-bottom: solid 2px #6c757d;
+  margin-bottom: 15px;
+}
+
+.Logo {
+  width: 100% !important;
+  object-fit: cover;
+}
+
+.NavbarTabContainer {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0px 10px;
+}
+
+.NavbarTab {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  box-sizing: border-box;
+  border: none;
+  background-color: transparent;
+  margin-bottom: 5px;
+}
+
+.NavbarTab:hover {
+  transform: scale(1.1);
+}
+
+.NavIcon {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.NavLabel {
+  font-size: 18px;
+  color: #1b5a7a;
+  margin: 0px;
+}
+
+.remaining-width {
+  flex: 1;
+  padding: 20px;
+  background-color: #fafbfe;
+  color: #212529;
+  height: 100%;
+  /* Use 100% of parent height */
+  overflow-y: auto;
+  /* Allow scrolling only in content if needed */
+}
+
+.AuthorizedNavbarMob {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .AuthorizedNavbarLp {
+    display: none;
+  }
+
+  .AuthorizedNavbarMob {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: #c4dae6;
+    padding: 0;
+    /* Reduced padding for compactness */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-top: solid 2px #999;
+    /* Subtle shadow for depth */
+    z-index: 1000;
+    /* Ensures navbar stays above other content */
+  }
+
+  .NavbarTabMob {
+    width: 25%;
+    /* Equal width for all tabs */
+    max-width: 100px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* Space between icon and label */
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 5px 0;
+    /* Padding for tap area */
+    transition: transform 0.2s ease;
+    /* Smooth hover effect */
+  }
+
+  .NavbarTabMob:active {
+    transform: scale(0.95);
+    /* Slight press effect */
+  }
+
+  .NavIcon {
+    margin: 0px;
+  }
+
+  .NavLabelMob {
+    font-size: medium;
+    /* Smaller font for mobile */
+    color: #1b5a7a;
+    margin: 0;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+    /* Slightly bold for readability */
+  }
+}
+
+.PrgressbarBG {
+  background-color: #1b5a7a;
+}
+
+.ClickBG {
+  background-color: #eaeaea;
+}
+
+.btn-custom-primary {
+  background-color: #1b5a7a;
+  border-color: #1b5a7a;
+  color: #fafbfe;
+}
+
+.btn-custom-primary:hover,
+.btn-custom-primary:focus,
+.btn-custom-primary:active {
+  background-color: #1b5a7a;
+  border-color: #1b5a7a;
+  color: #fafbfe;
+}
+
+/* Card styling */
+.card {
+  border: none;
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+}
+
+/* Badge styling */
+.badge {
+  font-weight: 500;
+  border-radius: 12px;
+}
+
+.darkBlueText {
+  color: #1b5a7a;
+}
+
+.border-radius-15 {
+  border-radius: 15px;
+}
+
+.heading-1 {
+  font-size: 30px;
+  line-height: 34px;
+}
+
+.heading-3 {
+  font-size: 24px;
+  line-height: 30px;
+}
+
+.lightBlueBG {
+  background-color: #c4dae6;
+}
+
+.skills {
+  font-size: medium;
+}
+
+.ActivityBtn {
+  border: none;
+  background: none;
+  font-weight: 500;
+  color: #00306e;
+  transition: all 0.2s ease;
+}
+
+.ActivityBtn:hover {
+  border: none;
+  background: none;
+  font-weight: 500;
+  cursor: pointer;
+  align-items: center;
+}
+
+.ActivityBtn:hover i {
+  transform: translateX(3px);
+  transition: transform 0.2s ease;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+}
+
+.timeline-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  padding: 0px 15px;
+}
+
+.timeline-badge {
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+}
+
+.timeline-content {
+  margin-left: 20px;
+  border-radius: 15px;
+  padding: 5px 0px;
+}
+
+.timeline-item:hover {
+  background-color: #eaeaea;
+}
+
+.DateTime {
+  font-size: medium;
+  margin: 0;
+}
+.DashboardCard {
+  height: 70px;
+  width: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cardImg {
+  height: 120px;
+  border-radius: 10px;
+}
+
+/* Card styling */
+.card {
+  border: solid 1px #b8b8b8;
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+/* Swiper styling */
+.swiper {
+  width: 100%;
+  height: 100%;
+  padding: 10px 0 30px 0;
+}
+
+.swiper-slide {
+  width: 280px;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #1b5a7a;
+  background-color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 1rem;
+}
