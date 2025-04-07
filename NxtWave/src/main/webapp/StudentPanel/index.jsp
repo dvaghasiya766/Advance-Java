@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="Header.jsp" %>
+<%@ include file="Layout.jsp" %>
 		<div class="remaining-width pb-5">
             <!-- Dashboard Header -->
             <div class="container-fluid p-0 mb-4">
@@ -336,7 +336,6 @@
             </div>
         </div>
     </div>
-
 </body>
 
 </html>

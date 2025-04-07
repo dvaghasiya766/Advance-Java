@@ -1,3 +1,6 @@
+<%@page import="NxtWave.Common.Hashing.SessionCookie"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@
 	page import="jakarta.servlet.http.Cookie"
 %>
@@ -182,7 +185,7 @@
                 <div class="field-container py-2 py-md-4">
                     <h1 class="heading-1 darkText autoShow">Sign In</h1>
                     <p class="description autoShow">Fields for email and password</p>
-                    <form action="LogInServlet" method="post">
+                    <form action="LogInUser" method="post">
                         <div class="filed-group autoShow">
                             <label for="email" class="form-label">Email address</label>
                             <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" required>
@@ -231,38 +234,38 @@
                 <div class="field-container py-2 py-md-4">
                     <h1 class="heading-1 darkText autoShow">Sign Up</h1>
                     <p class="description autoShow">Fields for Registration...</p>
-                    <form action="SignUpServlet" method="post">
+                    <form action="SignUpStudent" method="post">
                         <div class="filed-group autoShow">
                             <label for="fname" class="form-label">First Name</label>
-                            <input type="text" class="form-control" id="fname" name="fname" required>
+                            <input type="text" class="form-control" id="fname" name="firstName" required>
                             <div id="fnameHelp" class="form-text">
                                 Ex. Sachin
                             </div>
                         </div>
                         <div class="filed-group autoShow">
                             <label for="lname" class="form-label">Last Name</label>
-                            <input type="text" class="form-control" id="lname" name="lname" required>
+                            <input type="text" class="form-control" id="lname" name="lastName" required>
                             <div id="lnameHelp" class="form-text">
                                 Ex. Tendulkar
                             </div>
                         </div>
                         <div class="filed-group autoShow">
                             <label for="remail" class="form-label">Email address</label>
-                            <input type="email" class="form-control" id="remail" name="remail" aria-describedby="emailHelp" required>
+                            <input type="email" class="form-control" id="remail" name="email" aria-describedby="emailHelp" required>
                             <div id="remailHelp" class="form-text">
                                 We'll never share your email with anyone else.
                             </div>
                         </div>
                         <div class="filed-group autoShow">
                             <label for="mob" class="form-label">Contact Number</label>
-                            <input type="tel" class="form-control" id="mob" name="mob" required>
+                            <input type="tel" class="form-control" id="mob" name="contactNo" required>
                             <div id="mobHelp" class="form-text">
                                 Ex. 8500*****4
                             </div>
                         </div>
                         <div class="filed-group autoShow">
                             <label for="rpsw" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="rpsw" name="rpsw" aria-describedby="passwordHelp"
+                            <input type="password" class="form-control" id="rpsw" name="password" aria-describedby="passwordHelp"
                                 required>
                             <div id="rpswHelp" class="form-text">
                                 Tip: Capital, Small, Spacial and Numerical Latter Must be Exist.
@@ -271,10 +274,6 @@
                         <div class="filed-group autoShow">
                             <button type="submit" class="btn btn-primary submit-btn">SignUp</button>
                         </div>
-                        <!-- <div class="form-check autoShow">
-                            <input type="checkbox" class="form-check-input" id="rememberMe">
-                            <label class="form-check-label" for="rememberMe">Remember me</label>
-                        </div> -->
                     </form>
                     <div class="display-row autoShow">
                         <a href="LinkedIn.com" class="forgot-password">
@@ -420,60 +419,10 @@
         </div>
         <!-- CopyRight Text -->
         <div class="container border-top border-secondary pt-2">
-            <p class="text-end text-white m-0">Copyright © 2025 NxtWave. All rights reserved.</p>
+            <p class="text-end text-white m-0">Copyright Â© 2025 NxtWave. All rights reserved.</p>
         </div>
     </footer>
-    <div class="popUp d-none" id="popUpDanger">
-	    <div class="popContainer alert alert-danger d-flex align-items-center" role="alert">
-	    	<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
-    			<path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-			</svg>
-  			<p class="m-0" id="popUpDangerText">
-	    		An example danger alert with an icon
-	    	</p>
-	   	</div>
-    </div>
-	<script>
-		function displayPopUp(popUpId, popUpTextId, popUpText) {
-			popUpId.classList.remove("d-none");
-			popUpId.classList.add("d-flex", "popUpAnimation");
-			popUpTextId.textContent = popUpText;
-			setTimeout(() => {
-				popUpId.classList.remove("d-flex");
-	    		popUpId.classList.add("d-none");
-	  		}, 5000);
-		}
-	</script>
-	<%
-	Cookie[] cookies = request.getCookies();
-	if (cookies != null) {
-	    for (Cookie cookie : cookies) {
-	        if ("isFailed".equals(cookie.getName())) {
-	            // Remove the cookie first
-	            Cookie removeCookie = new Cookie("isFailed", "");
-	            removeCookie.setMaxAge(0);
-	            response.addCookie(removeCookie);
-	            
-	            // Get and escape the cookie value
-	            String errorMessage = java.net.URLDecoder.decode(cookie.getValue(), "UTF-8");
-	            %>
-	            <script>
-	                window.addEventListener('DOMContentLoaded', function() {
-	                    let x = '<%= errorMessage.replace("'", "\\'") %>';
-	                    displayPopUp(
-	                        document.getElementById('popUpDanger'),
-	                        document.getElementById('popUpDangerText'),
-	                        x
-	                    );
-	                    console.log(x);
-	                });
-	            </script>
-	            <%
-	            break;
-	        }
-	    }
-	}
-	%>
+    <%@ include file="Cookies.jsp" %>
 </body>
 
 </html>

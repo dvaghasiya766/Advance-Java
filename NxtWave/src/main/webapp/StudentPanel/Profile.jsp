@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="Header.jsp" %>
+<%@ include file="Layout.jsp" %>
 <!-- Hero Section -->
 <div class="remaining-width pb-5">
             <!-- Profile Header Section -->
@@ -9,7 +9,7 @@
                         <h2 class="fw-bold m-0 darkBlueText heading-1">My Profile</h2>
                     </div>
                     <div class="col-2 d-flex justify-content-end">
-                        <button class="btn btn-danger d-flex" onclick="redirectBack()">
+                        <button class="btn btn-danger d-flex" onclick="LogOut()">
                             <p class="me-2 mb-0">LogOut</p>
                             <img src="../Assets/Images/Sign_out_squre@3x.png" height="20px" alt="">
                         </button>

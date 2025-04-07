@@ -322,3 +322,25 @@ body {
 .swiper-button-prev::after {
   font-size: 1rem;
 }
+
+/* Active Tab Styling */
+.NavbarTab.activeNavTab,
+.NavbarTabMob.activeNavTab {
+    background-color: #e6f2ff; /* Light blue background */
+    border-left: 4px solid #1b5a7a; /* Left border accent */
+    transform: scale(1.05); /* Slight scale effect */
+    transition: all 0.2s ease; /* Smooth transition */
+}
+
+.NavbarTab.activeNavTab .NavIcon,
+.NavbarTabMob.activeNavTab .NavIcon {
+    filter: brightness(0.8) saturate(1.5); /* Slightly enhance icon */
+}
+
+.NavbarTab.activeNavTab .NavLabel,
+.NavbarTabMob.activeNavTab .NavLabel,
+.NavbarTab.activeNavTab .NavLabelMob,
+.NavbarTabMob.activeNavTab .NavLabelMob {
+    color: #0d3c5f; /* Darker text color */
+    font-weight: 600; /* Slightly bolder text */
+}
