@@ -7,6 +7,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+
+import NxtWave.Common.Connection.MailApp;
 import NxtWave.Common.Hashing.SessionCookie;
 import NxtWave.StudentManagement.DAO.StudentDAO;
 import NxtWave.StudentManagement.Model.StudentBean;
@@ -40,7 +42,6 @@ public class SignUpStudent extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 1. Create Student Bean from request parameters
         StudentBean student = createStudentFromRequest(request);
-        
         try {
             // 2. Attempt to insert student record
             int result = StudentDAO.insertStudentDetails(student);
@@ -70,6 +71,7 @@ public class SignUpStudent extends HttpServlet {
 
     private void handleSuccess(HttpServletResponse response, String email) throws IOException {
         String message = "Registration successful! Please check your email to activate your account.";
+        MailApp.sendActivationMail(email);
         SessionCookie.setNotificationCookie(response, message, true);
         response.sendRedirect("index.jsp#LogIn");
     }
@@ -85,5 +87,4 @@ public class SignUpStudent extends HttpServlet {
         SessionCookie.setNotificationCookie(response, message, false);
         response.sendRedirect("index.jsp#SignUp");
     }
-
 }

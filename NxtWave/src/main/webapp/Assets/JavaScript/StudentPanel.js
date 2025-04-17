@@ -1,51 +1,73 @@
-/**
- * 
- */
 // You would typically load dashboard data from an API here
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener("DOMContentLoaded", function() {
+	// Initialize UI components
+	initializePage();
+});
+
+function initializePage() {
+	initSwipers();
+	// Set active tab
+	setActiveTab();
+}
+function initSwipers() {
 	// Initialize Swiper
 	var swiper = new Swiper(".mySwiper", {
-		slidesPerView: 'auto',
+		slidesPerView: "auto",
+	    grabCursor: "true",
+	    spaceBetween: 20,
+	    navigation: {
+			nextEl: ".swiper-button-next",
+			prevEl: ".swiper-button-prev",
+		},
+	});
+	var swiperCourses = new Swiper(".mySwiper1", {
+		slidesPerView: "auto",
 		grabCursor: "true",
-		spaceBetween: 20,
+		spaceBetween: 10,
 		navigation: {
 			nextEl: ".swiper-button-next",
 			prevEl: ".swiper-button-prev",
 		},
 	});
-	
-    // Function to set active tab based on current page
-    function setActiveTab() {
-		const allLPTabIDs = [
-			"index", "MyCourse", "AllCourses", "Prectice", "Disscussion", 
-			"Assignments", "Profile", "Home", "Courses", "DisscussioMob", "ProfileMob"
-		];
-		const ObjectIDs = {
-			"index.jsp" : ["index", "Home"],
-			"MyCourse.jsp" : ["MyCourse"],
-			"AllCourses.jsp" : ["AllCourses", "Courses"],
-			"Prectice.jsp" : ["Prectice"],
-			"Disscussion.jsp" : ["Disscussion", "DisscussioMob"],
-			"Assignments.jsp" : ["Assignments"],
-			"Profile.jsp": ["Profile", "ProfileMob"]
-		};
-        // Get current page URL (handle query parameters and paths)
-        const currentPage = window.location.pathname.split('/').pop().split('?')[0];
-        
-        // Remove active class from all tabs first
-        allLPTabIDs.forEach(tab => {
-            tab.classList.remove('activeNavTab');
-			console.log(tab);
-        });
-        
-        // Find and activate the matching tab
-		
-        const activeTab = document.querySelector(`[onclick*="${currentPage}"]`);
-        if (activeTab) {
-            activeTab.classList.add('activeNavTab');
-        }
-    }
-    
-    // Call the function when page loads
-    setActiveTab();
-});
+}
+
+function setActiveTab() {
+    // Tab activation code...
+	let totalTab = [
+	      "index",
+	      "MyCourse",
+	      "AllCourses",
+	      "Activity",
+	      "Disscussion",
+	      "Assignments",
+	      "Profile",
+	];
+	let mobTabs = ["index", "AllCourses", "Disscussion", "Profile"];
+	let ConvertionObj = {
+		index: "Home",
+		AllCourses: "Courses",
+		Disscussion: "DisscussioMob",
+		Profile: "ProfileMob",
+	};
+	let currentPage = window.location.href.split("/").pop().split("#")[0]; // Get the current page name
+	currentPage = currentPage.split(".").slice(0, -1).join("."); // Remove the file extension
+	if (!totalTab.includes(currentPage)) {
+		currentPage = "index";
+	}
+	let inactiveTab = document.getElementById(currentPage);
+	inactiveTab.classList.add("d-none"); // Hide the inactive tab
+	let activeTab = document.getElementById("Active" + currentPage);
+	activeTab.classList.remove("d-none");
+	if (mobTabs.includes(currentPage)) {
+		inactiveTab = document.getElementById(ConvertionObj[currentPage]);
+		inactiveTab.classList.add("d-none"); // Hide the inactive tab
+		activeTab = document.getElementById("Active" + ConvertionObj[currentPage]);
+		activeTab.classList.remove("d-none");
+	} else {
+		currentPage = "index";
+		inactiveTab = document.getElementById(ConvertionObj[currentPage]);
+		inactiveTab.classList.add("d-none"); // Hide the inactive tab
+		activeTab = document.getElementById("Active" + ConvertionObj[currentPage]);
+		activeTab.classList.remove("d-none");
+	}
+}

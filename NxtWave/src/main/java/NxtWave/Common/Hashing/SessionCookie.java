@@ -21,13 +21,14 @@ public class SessionCookie {
      * @return true if session was successfully set
      * @throws IllegalArgumentException if request is null
      */
-    public static boolean setSession(HttpServletRequest request, String email, String role) {
+    public static boolean setSession(HttpServletRequest request, int id, String email, String role) {
         if (request == null) {
             throw new IllegalArgumentException("HttpServletRequest cannot be null");
         }
         
         try {
             HttpSession session = request.getSession();
+            session.setAttribute("id", id);
             session.setAttribute("email", email);
             session.setAttribute("role", role);
             session.setAttribute("authenticated", true);
@@ -35,6 +36,7 @@ public class SessionCookie {
             session.setAttribute("userAgent", request.getHeader("User-Agent"));
             request.changeSessionId();
             
+            // System.out.println(getIdFromSession(request));
             // Optional: Set session timeout (in seconds)
             session.setMaxInactiveInterval(50 * 60); // 50 minutes
             
@@ -90,6 +92,7 @@ public class SessionCookie {
                 session.removeAttribute("authenticated");
                 session.removeAttribute("email");
                 session.removeAttribute("role");
+                session.removeAttribute("id");
                 
                 // Additional security cleanup
                 Enumeration<String> attrNames = session.getAttributeNames();
@@ -191,5 +194,41 @@ public class SessionCookie {
         cookie.setMaxAge(0);
         cookie.setPath("/");
         response.addCookie(cookie);
+    }
+    
+    /**
+     * @param request
+     * @return
+     * for get Student ID
+     */
+//    public static String getIdFromSession(HttpServletRequest request) {
+//        Object idObj = request.getSession().getAttribute("id");
+//        return (idObj != null) ? idObj.toString() : null;
+//    }
+    public static Integer getIdFromSession(HttpServletRequest request) {
+    		Object idObj = request.getSession().getAttribute("id");
+    		if (idObj instanceof Integer) {
+    	        return (Integer) idObj;
+    	    } else if (idObj instanceof String) {
+    	        try {
+    	            return Integer.parseInt((String) idObj);
+    	        } catch (NumberFormatException e) {
+    	            System.err.println("Invalid ID format in session: " + idObj);
+    	            return null;
+    	        }
+    	    }
+    	    return null;
+	}
+    public static String getLastPageFromSession(HttpServletRequest request) {
+        Object lastPage = request.getSession().getAttribute("lastPage");
+        return (lastPage != null) ? lastPage.toString() : null;
+    }
+    public static String getEmailIdFromSession(HttpServletRequest request) {
+        Object studentId = request.getSession().getAttribute("email");
+        return (studentId != null) ? studentId.toString() : null;
+    }
+    public static String getRoleFromSession(HttpServletRequest request) {
+        Object studentId = request.getSession().getAttribute("role");
+        return (studentId != null) ? studentId.toString() : null;
     }
 }

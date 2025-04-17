@@ -1,19 +1,28 @@
 package NxtWave.StudentManagement.Model;
 
-import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
 
 public class StudentBean {
+	private String avtar;
 	private String firstName;
     private String lastName;
     private String email;
     private String contactNo;  // Changed from int to String to match VARCHAR(15) in DB
     private String password;
-    private LocalDate dob = null;     // Changed from String to LocalDate for better date handling
-    private String skills = null;
-    private String education = null;
+    private String Country;
+	private java.sql.Date dob = null;     // Changed from String to LocalDate for better date handling
+    private List<String> skills = new ArrayList<>();
     private boolean status = false; // Changed from Boolean to primitive boolean
-    
-    // Getter & Settes Methods
+    private Date createAt;
+	public String getAvtar() {
+		return avtar;
+	}
+	public void setAvtar(String avtar) {
+		this.avtar = avtar;
+	}
 	public String getFirstName() {
 		return firstName;
 	}
@@ -44,28 +53,36 @@ public class StudentBean {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public LocalDate getDob() {
+	public String getCountry() {
+		return Country;
+	}
+	public void setCountry(String country) {
+		Country = country;
+	}
+	public java.sql.Date getDob() {
 		return dob;
 	}
-	public void setDob(LocalDate dob) {
+	public void setDob(java.sql.Date dob) {
 		this.dob = dob;
 	}
-	public String getSkills() {
-		return skills;
+	public List<String> getSkills() {
+	    return Collections.unmodifiableList(skills);
 	}
-	public void setSkills(String skills) {
-		this.skills = skills;
-	}
-	public String getEducation() {
-		return education;
-	}
-	public void setEducation(String education) {
-		this.education = education;
+	public void addSkills(String skill) {
+	    if (skill != null && !skill.trim().isEmpty()) {
+	        skills.add(skill.trim());
+	    }
 	}
 	public boolean isStatus() {
 		return status;
 	}
 	public void setStatus(boolean status) {
 		this.status = status;
+	}
+	public Date getCreateAt() {
+		return createAt;
+	}
+	public void setCreateAt(Date createAt) {
+		this.createAt = createAt;
 	}
 }

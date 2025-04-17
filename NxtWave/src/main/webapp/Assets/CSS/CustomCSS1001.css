@@ -56,3 +56,6 @@ body {
 .popContainer {
 	width: fit-content;
 }
+a {
+	text-decoration: none;
+}

@@ -2,14 +2,12 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
-  overflow: hidden;
+  overflow: auto;
 }
 
 .full-width {
   width: 100vw;
   height: 100vh;
-
-  /* Display Configuration */
   display: flex;
 }
 
@@ -52,12 +50,13 @@ body {
   justify-content: start;
   box-sizing: border-box;
   border: none;
+  border-radius: 5px;
   background-color: transparent;
   margin-bottom: 5px;
 }
 
 .NavbarTab:hover {
-  transform: scale(1.1);
+  background-color: #afccdc;
 }
 
 .NavIcon {
@@ -203,7 +202,7 @@ body {
 }
 
 .heading-1 {
-  font-size: 30px;
+  font-size: 35px;
   line-height: 34px;
 }
 
@@ -252,6 +251,7 @@ body {
   justify-content: start;
   align-items: center;
   padding: 0px 15px;
+  cursor: pointer;
 }
 
 .timeline-badge {
@@ -324,23 +324,489 @@ body {
 }
 
 /* Active Tab Styling */
+/* Active Tab Styling */
 .NavbarTab.activeNavTab,
 .NavbarTabMob.activeNavTab {
-    background-color: #e6f2ff; /* Light blue background */
-    border-left: 4px solid #1b5a7a; /* Left border accent */
-    transform: scale(1.05); /* Slight scale effect */
-    transition: all 0.2s ease; /* Smooth transition */
-}
-
-.NavbarTab.activeNavTab .NavIcon,
-.NavbarTabMob.activeNavTab .NavIcon {
-    filter: brightness(0.8) saturate(1.5); /* Slightly enhance icon */
+  background-color: #fafbfe; /* Light blue background */
+  border-radius: 5px; /* Rounded corners */
 }
 
 .NavbarTab.activeNavTab .NavLabel,
 .NavbarTabMob.activeNavTab .NavLabel,
 .NavbarTab.activeNavTab .NavLabelMob,
 .NavbarTabMob.activeNavTab .NavLabelMob {
-    color: #0d3c5f; /* Darker text color */
-    font-weight: 600; /* Slightly bolder text */
+  color: #1b5a7a; /* Darker text color */
 }
+
+.activeNavTab {
+	transform: scale(1) !important;
+}
+
+/* Course Card Styling */
+.CourseCard {
+  width: 100%;
+  max-width: 250px;
+  margin: 10px 5px;
+}
+
+@media (max-width: 768px) {
+  .CourseCard {
+    width: 100%;
+    max-width: 400px;
+  }
+}
+
+.customBorderedBox {
+    border: 2px solid #D4E7FF;
+    /* Bootstrap primary color */
+    border-radius: 10px;
+    background-color: #FFFFFF;
+}
+
+.lightBlueBG:hover {
+    background-color: #c4dae6;
+    /* Bootstrap primary color */
+}
+
+.NotFoundImg {
+	max-width: 1000px;
+	width: 100%;
+}
+
+.lightBlueBG:hover {
+    background-color: #c4dae6;
+    /* Bootstrap primary color */
+}
+
+.customBorderedBox:hover {
+    background-color: #eaeaea6a;
+    cursor: pointer;
+}
+
+.CourseIndicator {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+}
+
+.CourseColor1 {
+    background-color: #FF4848;
+}
+
+.CourseColor2 {
+    background-color: #78C40F;
+}
+
+.CourseColor3 {
+    background-color: #C736AA;
+}
+
+.CourseColor4 {
+    background-color: #A38F77;
+}
+
+.text-truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.customHoverBox:hover {
+    background-color: #eaeaea6a;
+    cursor: pointer;
+}
+
+/* for Selection */
+/* Container Styling */
+.choise-selection {
+    display: flex;
+    gap: 10px;
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 10px;
+}
+
+/* Hide Radio Buttons */
+.choise-selection input[type="radio"],
+.choise-selection input[type="checkbox"] {
+    display: none;
+}
+
+/* Button Styling */
+.choise-selection .btn {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 16px;
+    color: #1b5a7a;
+    /* Default text color */
+    background-color: #c4dae6;
+    /* Default background color */
+    border: 2px solid #c4dae6;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+/* Active/Selected State */
+.choise-selection input[type="radio"]:checked+.btn,
+.choise-selection input[type="checkbox"]:checked+.btn {
+    background-color: #1b5a7a;
+    /* Active background color */
+    color: #c4dae6;
+    /* Active text color */
+    border: 2px solid #1b5a7a;
+}
+
+.start-btn {
+    background-color: #00306e;
+    color: #ffffff;
+    font-size: medium;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.start-btn:hover {
+    background-color: #002357;
+    color: #ffffffdc;
+}
+
+/* Pending Status Badge Styling */
+.pending-bg {
+    background-color: rgba(255, 244, 178, 0.64) !important;
+}
+
+.pending-txt {
+    color: #ffc107;
+    font-size: 13px;
+}
+
+/* Completed Status Badge Styling */
+.completed-bg {
+    background-color: rgba(23, 168, 84, 0.15) !important;
+}
+
+.completed-txt {
+    color: #198754;
+    font-size: 13px;
+}
+
+
+/* Missed Status Badge Styling */
+.missed-bg {
+    background-color: rgba(220, 53, 69, 0.15) !important;
+}
+
+.missed-txt {
+    color: #dc3545;
+    font-size: 13px;
+}
+
+.large {
+    font-size: 23px;
+    color: #333;
+}
+
+.submit-btn {
+    background-color: #00306e;
+    color: #ffffff;
+    font-size: medium;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background-color: #002357;
+    color: #ffffffdc;
+}
+.larger {
+  font-size: 50px;
+  color: #333;
+}
+
+.NavBar {
+  background-color: rgb(255 255 255);
+  border-radius: 0px;
+  padding: 10px;
+  box-shadow: 0px 3px 5px 0px #55555575;
+}
+
+.NavLogo {
+  height: 40px;
+  margin-right: 10px;
+  border-radius: 3px;
+}
+
+.NavItems {
+  color: #555;
+  text-decoration: none;
+  margin: 0px 12px;
+  cursor: pointer;
+  font-size: large;
+}
+
+.setCourseBackground {
+  width: 100%;
+  height: 300px;
+  background-attachment: fixed;
+  /* deep charcoal to black */
+  color: #f0f0f0;
+  /* soft white text */
+  background-blend-mode: overlay;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-bottom: solid 5px;
+}
+
+.shadow {
+  box-shadow: 0 0 10px 1px #666666;
+}
+
+.CourseNavigateBtn {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.rateContainer {
+  padding: 10px 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.rate {
+  line-height: 70px;
+  font-size: 60px;
+  font-weight: bold;
+  color: #444;
+}
+
+.CourseInfoCard {
+  background-color: white;
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 16px;
+  color: #334155;
+  border: 1px solid #e2e8f0;
+  box-sizing: border-box;
+}
+
+.CourseInfoCard p {
+  margin: 0;
+}
+
+.border-green {
+  border-left: 6px solid #65a30d;
+}
+
+.border-dark-green {
+  border-left: 6px solid #0d9488;
+}
+
+.border-dark-yellow {
+  border-left: 6px solid #ca8a04;
+}
+
+.border-orange {
+  border-left: 6px solid #ea580c;
+}
+
+.CourseNavContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 20px;
+  border-bottom: solid 2px #444;
+}
+
+.CourseNavItem {
+  border-bottom: 0px;
+  background-color: transparent;
+  border: none;
+  width: 120px;
+  height: 40px;
+  font-size: 18px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+.ActiveCourseNavContainer {
+  border: 0;
+  border-bottom: solid 4px;
+  background-color: transparent;
+  width: 120px;
+  height: 40px;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+@media (max-width: 500px) {
+  .larger {
+    font-size: 30px;
+  }
+}
+@media (max-width: 1000px) {
+  .larger {
+    font-size: 35px;
+  }
+}
+.module-card {
+  border-left: 4px solid;
+  border-radius: 4px;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.module-header {
+  background-color: #f8f9fa;
+  padding: 15px;
+  cursor: pointer;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.module-content {
+  padding: 0;
+  display: none;
+}
+
+.topic-item {
+  padding: 15px;
+  border-bottom: 1px solid #f0f0f0;
+  display: flex;
+  align-items: center;
+}
+
+.topic-item:last-child {
+  border-bottom: none;
+}
+
+.topic-icon {
+  margin-right: 15px;
+  font-size: 1.2rem;
+}
+
+.active-module .module-header {
+  background-color: #e9ecef;
+}
+
+.active-module .module-content {
+  display: block;
+}
+#output-container,
+#editor-container {
+  font-size: 16px;
+  color: #555;
+}
+
+#output-container h1,
+#editor-container h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1b5a7a;
+  padding-bottom: 12px;
+  border-bottom: 3px solid #c4dae6;
+}
+
+#output-container h2,
+#editor-container h2 {
+  font-size: 2.2rem !important;
+  font-weight: 600;
+  color: #1b5a7a;
+  margin: 0 0 5px 0;
+}
+
+#output-container h3,
+#editor-container h3 {
+  font-size: 1.8rem !important;
+  font-weight: 600;
+  color: #1b5a7a;
+  margin: 0;
+}
+
+#output-container h4,
+#editor-container h4 {
+  font-size: 1.5rem !important;
+  font-weight: 600;
+  color: #1b5a7a;
+  margin: 0;
+}
+
+#output-container img,
+#editor-container img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  margin: 0 0 20px 0;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.629);
+}
+
+#output-container ul,
+#output-container ol,
+#editor-container ul,
+#editor-container ol {
+  padding-left: 50px;
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+
+#output-container li,
+#editor-container li {
+  margin-bottom: 0;
+}
+
+/* Blockquotes */
+#output-container blockquote,
+#editor-container blockquote {
+  border-left: 5px solid #1b5a7a;
+  padding: 20px 30px;
+  margin: 1.5em 0;
+  color: #555;
+  background-color: #f9f9f9;
+  border-radius: 12px 12px;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+/* Links */
+#output-container a,
+#editor-container a {
+  color: #1b5a7a;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+/* Code Blocks */
+#output-container pre,
+#editor-container pre {
+  background-color: #23241f;
+  border-radius: 12px;
+  padding: 24px;
+  color: #f8f8f2;
+  border: 1px solid #eaeaea;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  overflow-x: auto;
+  margin: 0;
+}
+.editor-wrapper {
+  width: 100%;
+  max-width: 1100px;
+  /* Slightly wider */
+  margin: 0 auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-radius: 15px;
+}
+/* ===== Quill Editor - Large Font Version ===== */
+

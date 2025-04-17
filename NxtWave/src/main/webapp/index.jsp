@@ -1,4 +1,3 @@
-<%@page import="NxtWave.Common.Hashing.SessionCookie"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@

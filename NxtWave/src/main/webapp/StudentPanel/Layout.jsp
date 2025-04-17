@@ -27,10 +27,13 @@
     <!-- External CSS -->
     <link rel="stylesheet" href="../Assets/CSS/CustomCSS1001.css">
     <link rel="stylesheet" href="../Assets/CSS/StudentPanel.css">
-    <!-- External JS -->
-    <script src="../Assets/JavaScript/StudentPanel.js"></script>
 </head>
 <body>
+	<style>
+		body {
+			overflow: hidden;
+		}
+	</style>
     <div class="full-width">
     	<%@ include file="../Cookies.jsp" %>
         <!-- NavBar -->
@@ -39,32 +42,65 @@
                 <img class="Logo" src="../Assets/Images/Logo 1003.png" alt="Logo" style="width: 100px;">
             </div>
             <div class="NavbarTabContainer mb-auto">
-                <button class="activeNavTab NavbarTab" onclick="redirection('index.jsp')" id="index">
+                <button class="NavbarTab" onclick="redirection('index.jsp')" id="index">
                     <img class="NavIcon" src="../Assets/Images/Home_duotone1.png" alt="Profile Pic">
+                    <p class="NavLabel">Home</p>
+                </button>
+                <button class="activeNavTab NavbarTab d-none" onclick="redirection('index.jsp')" id="Activeindex">
+                    <img class="NavIcon" src="../Assets/Images/Home_duotone.png" alt="Profile Pic">
                     <p class="NavLabel">Home</p>
                 </button>
                 <button class="NavbarTab" onclick="redirection('MyCourse.jsp')" id="MyCourse">
                     <img class="NavIcon" src="../Assets/Images/Chart_alt_duotone_line@3x1.png" alt="Profile Pic">
                     <p class="NavLabel">My Courses</p>
                 </button>
+                <button class="activeNavTab NavbarTab d-none" onclick="redirection('MyCourse.jsp')"
+                    id="ActiveMyCourse">
+                    <img class="NavIcon" src="../Assets/Images/Chart_alt_duotone_line@3x.png" alt="Profile Pic">
+                    <p class="NavLabel">My Courses</p>
+                </button>
                 <button class="NavbarTab" onclick="redirection('AllCourses.jsp')" id="AllCourses">
                     <img class="NavIcon" src="../Assets/Images/Database_duotone@3x1.png" alt="Profile Pic">
                     <p class="NavLabel">Available Courses</p>
                 </button>
-                <button class="NavbarTab" onclick="redirection('Prectice.jsp')" id="Prectice">
-                    <img class="NavIcon" src="../Assets/Images/Book_open_duotone@3x1.png" alt="Profile Pic">
-                    <p class="NavLabel">Practice</p>
+                <button class="activeNavTab NavbarTab d-none" onclick="redirection('AllCourses.jsp')"
+                    id="ActiveAllCourses">
+                    <img class="NavIcon" src="../Assets/Images/Database_duotone@3x.png" alt="Profile Pic">
+                    <p class="NavLabel">Available Courses</p>
+                </button>
+                <button class="NavbarTab" onclick="redirection('Activity.jsp')" id="Activity">
+                    <img class="NavIcon" src="../Assets/Images/Activity1.png" alt="Profile Pic">
+                    <p class="NavLabel">Activity</p>
+                </button>
+                <button class="activeNavTab NavbarTab d-none" onclick="redirection('Activity.jsp')"
+                    id="ActiveActivity">
+                    <img class="NavIcon" src="../Assets/Images/Activity.png" alt="Profile Pic">
+                    <p class="NavLabel">Activity</p>
                 </button>
                 <button class="NavbarTab" onclick="redirection('Disscussion.jsp')" id="Disscussion">
                     <img class="NavIcon" src="../Assets/Images/Chat_alt_3_duotone_line@3x1.png" alt="Profile Pic">
+                    <p class="NavLabel">Disscussion</p>
+                </button>
+                <button class="activeNavTab NavbarTab d-none" onclick="redirection('Disscussion.jsp')"
+                    id="ActiveDisscussion">
+                    <img class="NavIcon" src="../Assets/Images/Chat_alt_3_duotone_line@3x.png" alt="Profile Pic">
                     <p class="NavLabel">Disscussion</p>
                 </button>
                 <button class="NavbarTab" onclick="redirection('Assignments.jsp')" id="Assignments">
                     <img class="NavIcon" src="../Assets/Images/Book_duotone_line@3x1.png" alt="Profile Pic">
                     <p class="NavLabel">Assignments</p>
                 </button>
+                <button class="activeNavTab NavbarTab d-none" onclick="redirection('Assignments.jsp')"
+                    id="ActiveAssignments">
+                    <img class="NavIcon" src="../Assets/Images/Book_duotone_line@3x.png" alt="Profile Pic">
+                    <p class="NavLabel">Assignments</p>
+                </button>
                 <button class="NavbarTab" onclick="redirection('Profile.jsp')" id="Profile">
                     <img class="NavIcon" src="../Assets/Images/User_box_duotone1.png" alt="Profile Pic">
+                    <p class="NavLabel">Profile</p>
+                </button>
+                <button class="activeNavTab NavbarTab d-none" onclick="redirection('Profile.jsp')" id="ActiveProfile">
+                    <img class="NavIcon" src="../Assets/Images/User_box_duotone.png" alt="Profile Pic">
                     <p class="NavLabel">Profile</p>
                 </button>
             </div>
@@ -80,16 +116,32 @@
                 <img class="NavIcon" src="../Assets/Images/Home_duotone1.png" alt="Profile Pic">
                 <p class="NavLabelMob">Home</p>
             </button>
+            <button class="activeNavTab NavbarTabMob  mx-1 my-1 p-0 d-none" onclick="redirection('index.jsp')" id="ActiveHome">
+                <img class="NavIcon" src="../Assets/Images/Home_duotone.png" alt="Profile Pic">
+                <p class="NavLabelMob">Home</p>
+            </button>
             <button class="NavbarTabMob" onclick="redirection('AllCourses.jsp')" id="Courses">
                 <img class="NavIcon" src="../Assets/Images/Database_duotone@3x1.png" alt="Profile Pic">
+                <p class="NavLabelMob text-turncate">Available Courses</p>
+            </button>
+            <button class="activeNavTab NavbarTabMob  mx-1 my-1 px-1 d-none" onclick="redirection('AllCourses.jsp')" id="ActiveCourses">
+                <img class="NavIcon" src="../Assets/Images/Database_duotone@3x.png" alt="Profile Pic">
                 <p class="NavLabelMob text-turncate">Available Courses</p>
             </button>
             <button class="NavbarTabMob" onclick="redirection('Disscussion.jsp')" id="DisscussioMob">
                 <img class="NavIcon" src="../Assets/Images/Chat_alt_3_duotone_line@3x1.png" alt="Profile Pic">
                 <p class="NavLabelMob">Disscussion</p>
             </button>
+            <button class="activeNavTab NavbarTabMob  mx-1 my-1 px-1 d-none" onclick="redirection('Disscussion.jsp')" id="ActiveDisscussioMob">
+                <img class="NavIcon" src="../Assets/Images/Chat_alt_3_duotone_line@3x.png" alt="Profile Pic">
+                <p class="NavLabelMob">Disscussion</p>
+            </button>
             <button class="NavbarTabMob" onclick="redirection('Profile.jsp')" id="ProfileMob">
                 <img class="NavIcon" src="../Assets/Images/User_box_duotone1.png" alt="Profile Pic">
+                <p class="NavLabelMob">Profile</p>
+            </button>
+            <button class="activeNavTab NavbarTabMob  mx-1 my-1 p-0 d-none" onclick="redirection('Profile.jsp')" id="ActiveProfileMob">
+                <img class="NavIcon" src="../Assets/Images/User_box_duotone.png" alt="Profile Pic">
                 <p class="NavLabelMob">Profile</p>
             </button>
         </nav>

@@ -1,8 +1,8 @@
+<%@page import="NxtWave.Common.Hashing.SessionCookie"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
 %>
 <%@	page import="jakarta.servlet.http.Cookie" %>
-<%@ page import="NxtWave.Common.Hashing.SessionCookie" %>
 <%-- Notification containers (fixed in your template/layout) --%>
 <div class="popUp d-none" id="popUpDanger">
     <div class="popContainer alert alert-danger d-flex align-items-center" role="alert">
@@ -28,14 +28,16 @@
 
 <%-- Notification JavaScript --%>
 <script>
+function hidePopUp() {
+}
 function displayPopUp(popUpId, popUpTextId, popUpText) {
 	popUpId.classList.remove("d-none");
 	popUpId.classList.add("d-flex", "popUpAnimation");
 	popUpTextId.textContent = popUpText;
 	setTimeout(() => {
 		popUpId.classList.remove("d-flex");
-   		popUpId.classList.add("d-none");
- 		}, 5000);
+		popUpId.classList.add("d-none");
+	}, 5000);
 }
 </script>
 

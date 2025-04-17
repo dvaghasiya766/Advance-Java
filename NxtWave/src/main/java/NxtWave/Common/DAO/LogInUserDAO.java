@@ -2,13 +2,12 @@ package NxtWave.Common.DAO;
 
 import java.sql.*;
 import NxtWave.Common.Hashing.PasswordUtil;
-import NxtWave.Common.Model.PostgreSQLConnection;
+import NxtWave.Common.Connection.*;
 
 public class LogInUserDAO {
     
     public static String checkUser(String email, String password) {
-        String sql = "SELECT * FROM USERS WHERE \"Email ID\" = ?";
-        
+        String sql = "SELECT * FROM users WHERE email_id = ?";        
         try (Connection conn = PostgreSQLConnection.getCon();
              PreparedStatement pst = conn.prepareStatement(sql)) {
             
