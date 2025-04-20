@@ -216,7 +216,7 @@
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label class="form-label text-muted small mb-1">Country</label>
-                                <p class="mb-0 fw-medium" id="country">India</p>
+                                <p class="mb-0 fw-medium" id="country"><%= Country %></p>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label class="form-label text-muted small mb-1">Join Date</label>
@@ -371,7 +371,7 @@
 <div class="modal fade" id="form1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
-			<form action="UpdateProfilePic" method="post" enctype="multipart/form-data">
+			<form action="UpdateStudentAvatar" method="post" enctype="multipart/form-data">
 				<div class="modal-header">
 					<h5 class="modal-title" id="exampleModalLongTitle">Update Profile Picture</h5>
 					<button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
@@ -393,7 +393,7 @@
 <div class="modal fade" id="form2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
-			<form action="UpdateUserInfo" method="post">
+			<form action="StudentUpdateInfo" method="post">
 				<div class="modal-header">
 					<h5 class="modal-title" id="exampleModalLongTitle">Update Profile</h5>
 					<button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>

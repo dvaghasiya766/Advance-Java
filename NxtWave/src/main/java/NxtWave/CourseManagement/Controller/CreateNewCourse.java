@@ -47,7 +47,7 @@ public class CreateNewCourse extends HttpServlet {
 	        // Get form data
 	        Part filePart1 = request.getPart("BGImage");
 	        Part filePart2 = request.getPart("AVImage");
-	        Integer customId = SessionCookie.getIdFromSession(request);
+	        String customId = request.getParameter("coursecode");
 	        
 	        // Validate inputs
 	        if (filePart1 == null || filePart2 == null || customId == null) {
@@ -65,8 +65,8 @@ public class CreateNewCourse extends HttpServlet {
 	        new File(uploadDirPath2).mkdirs();
 	        
 	        // Store files
-	        String storedFilePath1 = StoreFile.storeUploadedFile(filePart1, customId.toString(), uploadDirPath1);
-	        String storedFilePath2 = StoreFile.storeUploadedFile(filePart2, customId.toString(), uploadDirPath2);
+	        String storedFilePath1 = StoreFile.storeUploadedFile(filePart1, customId, uploadDirPath1);
+	        String storedFilePath2 = StoreFile.storeUploadedFile(filePart2, customId, uploadDirPath2);
 
 	        // Extract filenames
 	        String fileName1 = new File(storedFilePath1).getName();

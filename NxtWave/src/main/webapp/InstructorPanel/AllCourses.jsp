@@ -1,5 +1,12 @@
+<%@page import="NxtWave.CourseManagement.DAO.CourseDAO"%>
+<%@page import="java.sql.ResultSet"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="Layout.jsp" %>
+<%
+ResultSet courseDetails = CourseDAO.getActiveCourseDetails();
+boolean hasResults = false;
+%>
+
 <div class="remaining-width">
 	<!-- AllCourses Header -->
     <div class="container-fluid p-0 mb-4">

@@ -105,7 +105,7 @@
                         <!-- Profile Picture -->
                         <div class="position-relative d-inline-block mb-3">
                             <img src="../<%= Avatar %>" class="rounded-circle" width="150" height="150" alt="Profile" id="profileImage">
-                            <button class="btn btn-sm ClickBG position-absolute bottom-0 end-0 rounded-circle" style="width: 40px; height: 40px;" type="button" data-toggle="modal" data-target="#form1">
+                            <button class="btn-sm border border-0 ClickBG position-absolute bottom-0 end-0 rounded-circle" style="width: 40px; height: 40px;" type="button" data-toggle="modal" data-target="#form1">
                             		<i class="bi bi-camera-fill" style="color: #1B5A7A; font-size: 20px;"></i>
                             </button>
                         </div>
@@ -216,7 +216,7 @@
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label class="form-label text-muted small mb-1">Country</label>
-                                <p class="mb-0 fw-medium" id="country">India</p>
+                                <p class="mb-0 fw-medium" id="country"><%= Country %></p>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label class="form-label text-muted small mb-1">Join Date</label>
@@ -399,7 +399,7 @@
 					<button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
 				</div>
 				<div class="modal-body">
-					<div class="mb-3">
+					<div class="mb-3 d-none">
 						<label for="email" class="form-label">Email</label>
 						<input type="email" class="form-control disabled" id="email" name="email" value="<%= Email %>" required>
 					</div>

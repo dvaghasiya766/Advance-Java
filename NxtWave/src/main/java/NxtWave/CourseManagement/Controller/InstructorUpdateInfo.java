@@ -1,4 +1,4 @@
-package NxtWave.Common.Controller;
+package NxtWave.CourseManagement.Controller;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -15,16 +15,16 @@ import NxtWave.StudentManagement.DAO.StudentDAO;
 import NxtWave.StudentManagement.Model.StudentBean;
 
 /**
- * Servlet implementation class UpdateUserInfo
+ * Servlet implementation class InstructorUpdateInfo
  */
-@WebServlet("/StudentPanel/UpdateUserInfo")
-public class UpdateUserInfo extends HttpServlet {
+@WebServlet("/InstructorPanel/InstructorUpdateInfo")
+public class InstructorUpdateInfo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UpdateUserInfo() {
+    public InstructorUpdateInfo() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -41,7 +41,7 @@ public class UpdateUserInfo extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	    if (!SessionCookie.isValidSession(request)) {
+		if (!SessionCookie.isValidSession(request)) {
 	        response.sendRedirect(request.getContextPath() + "/index.jsp#LogIn");
 	        return;
 	    }
@@ -64,7 +64,7 @@ public class UpdateUserInfo extends HttpServlet {
             handleError(response, e);
         }
 	}
-	
+
 	private StudentBean createStudentFromRequest(HttpServletRequest request) {
         StudentBean student = new StudentBean();
         student.setFirstName(request.getParameter("firstname"));

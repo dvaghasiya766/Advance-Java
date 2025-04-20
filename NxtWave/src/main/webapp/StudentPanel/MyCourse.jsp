@@ -22,7 +22,8 @@
 						</div>
 						<div class="d-flex justify-content-between align-items-center">
 							<small class="text-muted">15 / 20 lessons</small>
-							<form action="CourseDetails.jsp">
+							<form action="CourseDetails.jsp" method="get">
+								<input type="hidden" name="courseID" value="1">
 								<button class="btn btn-sm px-3 rounded" style="background-color: rgb(0, 123, 255); color: rgb(255, 255, 255); border: none; cursor: pointer;">Continue</button>
 							</form>
 						</div>

@@ -1,3 +1,4 @@
+<%@page import="javax.print.attribute.HashPrintRequestAttributeSet"%>
 <%@page import="NxtWave.CourseManagement.DAO.CourseDAO"%>
 <%@page import="NxtWave.StudentManagement.DAO.StudentDAO"%>
 <%@page import="java.sql.ResultSet"%>
@@ -50,41 +51,92 @@
         }
     }
 %>
+<%
+ResultSet courseDetails = CourseDAO.getCourseDetailseByInstructorID(ID);
+boolean hasResults = false;
+%>
 <div class="remaining-width pb-5">
+	<div class="container-fluid p-0 mb-4">
+		<div class="row align-items-center">
+			<div class="col-md-6">
+				<h2 class="fw-bold mb-0 darkBlueText heading-1"><%= FirstName %>'s Courses!</h2>
+				<p class="text-muted">Explore <%= FirstName %>'s current courses and learning journey.</p>
+			</div>
+			<div class="col-md-6 d-flex justify-content-md-end">
+				<div class="input-group" style="max-width: 300px;">
+					<input type="text" class="form-control border-end-0" placeholder="Search courses...">
+					<span class="input-group-text bg-white border-start-0">
+						<i class="bi bi-search"></i>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
 	<div class="container-fluid p-0 mb-4">
 		<div class="d-flex flex-row justify-content-end">
 			<button class="btn btn-custom-primary rounded" type="button" data-toggle="modal" data-target="#form1">
 				<i class="bi bi-pencil-square me-2"></i>Edit Profile
 			</button>
 		</div>
-		<div class="d-flex flex-wrap" id="CourseContainer">
-			
-			<div class="CourseCard">
-				<div class="card h-100 shadow-sm border-0 rounded-3 overflow-hidden">
-					<div class="position-relative"><img src="../Assets/Images/CH.png" alt="Mastering JavaScript"
-							class="w-100 object-fit-cover" style="height: 130px;">
-						<div
-							class="position-absolute top-0 end-0 m-2 px-2 py-1 bg-dark bg-opacity-50 text-white rounded small">
-							70% Complete</div>
-					</div>
-					<div class="card-body px-3 py-3">
-						<h6 class="fw-bold mb-1">Mastering JavaScript</h6>
-						<p class="small text-muted mb-3">Learn with on NxtWave Platform</p>
-						<div class="progress rounded-pill mb-2" style="height: 8px;">
-							<div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0"
-								aria-valuenow="70" aria-valuemax="100"
-								style="background-color: rgb(245, 71, 34); width: 70%;"></div>
+		<div class="d-flex flex-wrap">
+			<% 	while(courseDetails.next()) {
+				hasResults = true;
+				String courseID = courseDetails.getString("id");
+				String courseAvatar = courseDetails.getString("avatar");
+		        String courseName = courseDetails.getString("course_name");
+		        String courseCode = courseDetails.getString("course_code");
+		        String courseColor = courseDetails.getString("course_color");
+		        String courseOtlt = courseDetails.getString("course_outlet");
+		        Boolean courseStatus = courseDetails.getBoolean("status");
+		        String courseStudents = courseDetails.getString("enrolled_students");
+				%>
+				<div class="CourseCard">
+					<div class="card h-100 shadow-sm border-0 rounded-3 overflow-hidden">
+						<div class="position-relative">
+							<img src="../<%= courseAvatar %>" alt="Mastering JavaScript" class="w-100 object-fit-cover" style="height: 130px;">
+							<div class="position-absolute top-0 end-0 m-2 px-2 py-1 bg-dark bg-opacity-50 text-white rounded small">
+								<%= courseStudents %> Enrolled
+							</div>
 						</div>
-						<div class="d-flex justify-content-between align-items-center">
-							<small class="text-muted">7/10 lessons</small>
-							<button class="btn btn-sm px-3 rounded"
-								style="background-color: rgb(245, 71, 34); color: rgb(255, 255, 255); border: none; cursor: pointer;">Continue</button>
+						<div class="card-body px-3 py-3">
+							<h6 class="fw-bold mb-1 text-truncate"><%= courseName %></h6>
+							<p class="small text-muted mb-1"><%= courseOtlt %></p>
+							<div class="mb-1">
+								<% if(courseStatus) {
+									%>
+									<span class="badge bg-dark text-light fw-medium py-2 px-3" style="font-size: 15px;">
+										<i class="bi bi-eye me-1"></i> Active
+									</span>
+									<%
+								} else {%>
+									<span class="badge bg-secondary text-light fw-medium py-2 px-3" style="font-size: 15px;">
+										<i class="bi bi-eye-slash me-1"></i> Inactive
+									</span>
+									<%
+								} %>
+							</div>
+							<div class="d-flex justify-content-between align-items-center">
+								<small class="text-muted"><%= courseStudents %> Enrolled</small>
+								<form method="get" action="CourseDetails.jsp">
+									<input type="hidden" name="courseID" value=<%= courseID %>>
+									<button class="btn btn-sm px-3 rounded" style="background-color: <%= courseColor %>; color: rgb(255, 255, 255); border: none; cursor: pointer;">View</button>
+								</form>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<!--  -->
+			<% } %>
 		</div>
+		<% if (!hasResults) {
+			%>
+			<div class="container-fluid p-0 pb-4 mb-5">
+				<div class="d-flex justify-content-center py-5">
+					<img alt="" src="../Assets/Images/not created.png" class="NotFoundImg">
+				</div>
+			</div>
+			<%
+		}
+		%>
 	</div>
 </div>
 

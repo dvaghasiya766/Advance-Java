@@ -1,10 +1,37 @@
+<%@page import="java.sql.SQLException"%>
 <%@page import="NxtWave.CourseManagement.DAO.CourseDAO"%>
 <%@page import="NxtWave.Common.Hashing.SessionCookie"%>
 <%@page import="java.sql.ResultSet"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" errorPage="Error.jsp"%>
 <%@ include file="Layout.jsp" %>
 
+<%
+// Initialize variables
+Integer UserID = SessionCookie.getIdFromSession(request);
+ResultSet CourseDetails = null;
+String CourseColor = "#00306e"; // Default color
+String CourseAV = "";
+String CourseName = "";
+String CourseOtlt = "";
+String CourseCode = "";
+String CourseStudents = "";
+
+try {
+    CourseDetails = CourseDAO.getActiveCourseDetails();
+}  catch (Exception e) {
+    e.printStackTrace();
+    SessionCookie.setNotificationCookie(response, "Database error occurred", false);
+    response.sendRedirect("MyCourse.jsp");
+}
+%>
 <!-- AllCourses Header -->
+<% 
+// Verify course exists or Not
+if (CourseDetails == null || !CourseDetails.next()) {
+    SessionCookie.setNotificationCookie(response, "Course not found or access denied", false);
+    response.sendRedirect("MyCourse.jsp");
+}
+%>
 <div class="remaining-width">
 	<div class="container-fluid p-0 mb-4">
 		<div class="row align-items-center">

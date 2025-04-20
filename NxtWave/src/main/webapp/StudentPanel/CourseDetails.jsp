@@ -1,17 +1,84 @@
+<%@page import="NxtWave.CourseManagement.DAO.CourseDAO"%>
 <%@ include file="NewLayout.jsp" %>
-    <div class="container-fluid setCourseBackground d-flex flex-column justify-content-start align-items-end text-center p-0"
-        style="border-color: #233A6C;   background-image: url('../Assets/Images/CH.png'), radial-gradient(#1f1f1fb5, #0d0d0ddb);">
-    </div>
-    <div class="container my-4">
-        <div class="row mb-5">
-            <div class="col-12 col-lg-4 mb-4">
-                <div class="d-flex flex-column justify-content-center h-100">
-                    <img src="../Assets/Images/CH.png" class="border border-1 shadow rounded img-fluid object-fit-cover"
-                        alt="">
-                    <div class="CourseNavigateBtn mb-2">
-                        <button type="button" class="btn mt-2 mx-1 w-50 text-light"
-                            style="background-color: #233A6C;">Enroll
-                            Now</button>
+<%
+// Initialize variables
+String courseIDStr = request.getParameter("courseID");
+Integer UserID = SessionCookie.getIdFromSession(request);
+int courseID = 0;
+ResultSet CourseDetails = null;
+String CourseColor = "#00306e"; // Default color
+String CourseBG = "";
+String CourseAV = "";
+String CourseName = "";
+String CourseOtlt = "";
+String CourseCode = "";
+String CourseDesc = null;
+Boolean CourseStatus = false;
+String CourseStudents = "";
+
+try {
+    // Validate courseID parameter
+    if (courseIDStr == null || courseIDStr.isEmpty()) {
+        SessionCookie.setNotificationCookie(response, "Invalid URL", false);
+        response.sendRedirect("MyCourse.jsp");
+        return; // Important to stop further execution
+    }
+
+    // Convert courseID to int
+    try {
+        courseID = Integer.parseInt(courseIDStr);
+    } catch (NumberFormatException e) {
+        SessionCookie.setNotificationCookie(response, "Invalid Course ID format", false);
+        response.sendRedirect("MyCourse.jsp");
+        return;
+    }
+
+    CourseDetails = CourseDAO.getActiveCourseDetails();
+    
+    // Verify course exists and user has access
+    if (CourseDetails == null || !CourseDetails.next()) {
+        SessionCookie.setNotificationCookie(response, "Course not found or access denied", false);
+        response.sendRedirect("MyCourse.jsp");
+        return;
+    }
+
+    // Get course color
+    CourseBG = CourseDetails.getString("background_image");
+    CourseAV = CourseDetails.getString("avatar");
+    CourseName = CourseDetails.getString("course_name");
+    CourseOtlt = CourseDetails.getString("course_outlet");
+    CourseColor = CourseDetails.getString("course_color");
+    CourseDesc = CourseDetails.getString("course_description");
+    CourseStatus = CourseDetails.getBoolean("status");
+    CourseStudents = CourseDetails.getString("enrolled_students");
+} catch (SQLException e) {
+    e.printStackTrace();
+    SessionCookie.setNotificationCookie(response, "Database error occurred", false);
+    response.sendRedirect("MyCourse.jsp");
+} finally {
+    // Close ResultSet in finally block
+    if (CourseDetails != null) {
+        try {
+            CourseDetails.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            SessionCookie.setNotificationCookie(response, "Database error occurred", false);
+            response.sendRedirect("MyCourse.jsp");
+        }
+    }
+}
+%>
+<div class="container-fluid setCourseBackground d-flex flex-column justify-content-start align-items-end text-center p-0" style="border-color: #233A6C;   background-image: url('../Assets/Images/CH.png'), radial-gradient(#1f1f1fb5, #0d0d0ddb);"></div>
+<div class="container my-4">
+	<div class="row mb-5">
+		<div class="col-12 col-lg-4 mb-4">
+			<div class="d-flex flex-column justify-content-center h-100">
+			<img src="../Assets/Images/CH.png" class="border border-1 shadow rounded img-fluid object-fit-cover" alt="">
+				<div class="CourseNavigateBtn mb-2">
+				 <form action="Course.jsp" class="mt-2 mx-1 w-50" method="get">
+				 	<input type="hidden" name="courseID" value="1">
+                    			<button type="submit" class="btn w-100 text-light" style="background-color: #233A6C;">Enroll Now</button>
+                        </form>
                         <button type="button" class="btn btn-outline-dark mt-2 mx-1 w-50">Share</button>
                     </div>
                     <!-- <div class="progress rounded-pill mt-2" style="height: 8px;">
@@ -71,8 +138,8 @@
                 data visualization, and machine learning. By the end of this course, you will have a solid understanding
                 of Python and its applications in data science.
             </p>
-            <div class="mb-3">
-                <label class="large darkBlueText mt-3 mb-1">Earn skills on</label>
+            <div class="mb-4">
+                <label class="large fw-bold darkBlueText mt-3 mb-1">Earn skills on</label>
                 <div class="d-flex flex-wrap gap-2" id="skillsContainer">
                     <span class="badge lightBlueBG bg-opacity-10 darkBlueText skills py-2 px-3">JavaScript</span>
                     <span class="badge lightBlueBG bg-opacity-10 darkBlueText skills py-2 px-3">React</span>
@@ -90,27 +157,7 @@
                         style="width: 80px; height: 80px;">
                     <div class="d-flex flex-column">
                         <h5 class="mb-0">John Smith</h5>
-                        <small class="text-muted mb-2">Course Designer</small>
-                        <a href="#" class="btn btn-outline-dark btn-sm rounded-pill w-auto">View Profile</a>
-                    </div>
-                </div>
-                <div class="card flex-row align-items-center shadow border-0 pe-4 py-3 my-2 mx-2"
-                    style="width: fit-content;">
-                    <img src="../Assets/Images/Default Profile Picture1.png" class="rounded-circle mx-3" alt="Avatar"
-                        style="width: 80px; height: 80px;">
-                    <div class="d-flex flex-column">
-                        <h5 class="mb-0">John Smith</h5>
-                        <small class="text-muted mb-2">Lecturer</small>
-                        <a href="#" class="btn btn-outline-dark btn-sm rounded-pill w-auto">View Profile</a>
-                    </div>
-                </div>
-                <div class="card flex-row align-items-center shadow border-0 pe-4 py-3 my-2 mx-2"
-                    style="width: fit-content;">
-                    <img src="../Assets/Images/Default Profile Picture1.png" class="rounded-circle mx-3" alt="Avatar"
-                        style="width: 80px; height: 80px;">
-                    <div class="d-flex flex-column">
-                        <h5 class="mb-0">John Smith</h5>
-                        <small class="text-muted mb-2">Host</small>
+                        <small class="text-muted mb-2">Course Instructor</small>
                         <a href="#" class="btn btn-outline-dark btn-sm rounded-pill w-auto">View Profile</a>
                     </div>
                 </div>

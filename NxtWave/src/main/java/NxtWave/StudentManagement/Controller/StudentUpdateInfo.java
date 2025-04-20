@@ -1,4 +1,4 @@
-package NxtWave.Common.Controller;
+package NxtWave.StudentManagement.Controller;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -15,16 +15,16 @@ import NxtWave.StudentManagement.DAO.StudentDAO;
 import NxtWave.StudentManagement.Model.StudentBean;
 
 /**
- * Servlet implementation class UpdateUserInfo
+ * Servlet implementation class StudentUpdateInfo
  */
-@WebServlet("/StudentPanel/UpdateUserInfo")
-public class UpdateUserInfo extends HttpServlet {
+@WebServlet("/StudentPanel/StudentUpdateInfo")
+public class StudentUpdateInfo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UpdateUserInfo() {
+    public StudentUpdateInfo() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -64,7 +64,7 @@ public class UpdateUserInfo extends HttpServlet {
             handleError(response, e);
         }
 	}
-	
+
 	private StudentBean createStudentFromRequest(HttpServletRequest request) {
         StudentBean student = new StudentBean();
         student.setFirstName(request.getParameter("firstname"));
